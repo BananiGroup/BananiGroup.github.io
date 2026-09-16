@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cocktail Menu</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 24px;
+      font-family: Arial, sans-serif;
+      background: #f7f1e8;
+      color: #2d2520;
+    }
+
+    h1 {
+      margin: 0 0 40px;
+      text-align: center;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: #9b3d2f;
+    }
+
+    .cocktail-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cocktail-card {
+      display: flex;
+      align-items: center;
+      min-height: 190px;
+      padding: 18px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(60, 35, 20, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cocktail-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(60, 35, 20, 0.18);
+    }
+
+    .cocktail-image {
+      width: 140px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 14px;
+      flex-shrink: 0;
+      background: #ead7c5;
+    }
+
+    .cocktail-info {
+      padding: 0 10px 0 22px;
+    }
+
+    .cocktail-info h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: #9b3d2f;
+    }
+
+    .cocktail-info p {
+      margin: 0;
+      line-height: 1.5;
+      color: #65564d;
+    }
+
+    @media (max-width: 700px) {
+      .cocktail-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .cocktail-card {
+        min-height: 150px;
+        padding: 12px;
+      }
+
+      .cocktail-image {
+        width: 100px;
+        height: 120px;
+      }
+
+      .cocktail-info {
+        padding-left: 14px;
+      }
+
+      .cocktail-info h2 {
+        font-size: 1.2rem;
+      }
+
+      .cocktail-info p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cocktail Menu</h1>
+
+  <main id="cocktail-list" class="cocktail-list"></main>
+
+  <script>
+    const cocktails = [
+      {
+        name: "Classic Margarita",
+        description: "A refreshing blend of tequila, lime juice, and orange liqueur.",
+        image: "https://placehold.co/280x300/e8b4a0/ffffff?text=Margarita"
+      },
+      {
+        name: "Mojito",
+        description: "White rum, fresh mint, lime, sugar, and sparkling soda water.",
+        image: "https://placehold.co/280x300/b8d8ba/ffffff?text=Mojito"
+      },
+      {
+        name: "Old Fashioned",
+        description: "Bourbon, bitters, and a touch of sugar served over ice.",
+        image: "https://placehold.co/280x300/c58b62/ffffff?text=Old+Fashioned"
+      },
+      {
+        name: "Strawberry Daiquiri",
+        description: "A sweet and fruity combination of rum, strawberries, and lime.",
+        image: "https://placehold.co/280x300/e98d9d/ffffff?text=Daiquiri"
+      },
+      {
+        name: "Negroni",
+        description: "A bittersweet Italian cocktail made with gin, vermouth, and Campari.",
+        image: "https://placehold.co/280x300/c94c4c/ffffff?text=Negroni"
+      },
+      {
+        name: "Piña Colada",
+        description: "A tropical mix of rum, coconut cream, and pineapple juice.",
+        image: "https://placehold.co/280x300/f2d49b/ffffff?text=Pina+Colada"
+      },
+      {
+        name: "Moscow Mule",
+        description: "Vodka, ginger beer, and lime served in a refreshing combination.",
+        image: "https://placehold.co/280x300/d9a66f/ffffff?text=Moscow+Mule"
+      },
+      {
+        name: "Blue Lagoon",
+        description: "A bright, citrusy cocktail with vodka, blue curaçao, and lemonade.",
+        image: "https://placehold.co/280x300/73b9d6/ffffff?text=Blue+Lagoon"
+      }
+    ];
+
+    const cocktailList = document.getElementById("cocktail-list");
+
+    cocktails.forEach((cocktail) => {
+      const card = document.createElement("article");
+      card.className = "cocktail-card";
+
+      card.innerHTML = `
+        <img
+          class="cocktail-image"
+          src="${cocktail.image}"
+          alt="${cocktail.name}"
+        />
+
+        <div class="cocktail-info">
+          <h2>${cocktail.name}</h2>
+          <p>${cocktail.description}</p>
+        </div>
+      `;
+
+      cocktailList.appendChild(card);
+    });
+  </script>
+</body>
+</html>
