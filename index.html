@@ -42,11 +42,28 @@
       background: #292929;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .cocktail-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+    }
+
+    .cocktail-card.sold-out::after {
+      content: "SOLD OUT";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.65);
+      color: #e05252;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      transform: rotate(-8deg);
     }
 
     .cocktail-image {
@@ -116,32 +133,38 @@
       {
         name: "Classic Margarita",
         description: "A refreshing blend of tequila, lime juice, and orange liqueur.",
-        image: "https://placehold.co/280x300/e8b4a0/ffffff?text=Margarita"
+        image: "https://placehold.co/280x300/e8b4a0/ffffff?text=Margarita",
+        available: true
       },
       {
         name: "Mojito",
         description: "White rum, fresh mint, lime, sugar, and sparkling soda water.",
-        image: "https://placehold.co/280x300/b8d8ba/ffffff?text=Mojito"
+        image: "https://placehold.co/280x300/b8d8ba/ffffff?text=Mojito",
+        available: false
       },
       {
         name: "Old Fashioned",
         description: "Bourbon, bitters, and a touch of sugar served over ice.",
-        image: "old-fashioned.png"
+        image: "old-fashioned.png",
+        available: true
       },
       {
         name: "Strawberry Daiquiri",
         description: "A sweet and fruity combination of rum, strawberries, and lime.",
-        image: "https://placehold.co/280x300/e98d9d/ffffff?text=Daiquiri"
+        image: "https://placehold.co/280x300/e98d9d/ffffff?text=Daiquiri",
+        available: true
       },
       {
         name: "Negroni",
         description: "A bittersweet Italian cocktail made with gin, vermouth, and Campari.",
-        image: "https://placehold.co/280x300/c94c4c/ffffff?text=Negroni"
+        image: "https://placehold.co/280x300/c94c4c/ffffff?text=Negroni",
+        available: true
       },
       {
         name: "Piña Colada",
         description: "A tropical mix of rum, coconut cream, and pineapple juice.",
-        image: "https://placehold.co/280x300/f2d49b/ffffff?text=Pina+Colada"
+        image: "https://placehold.co/280x300/f2d49b/ffffff?text=Pina+Colada",
+        available: true
       },
       {
         name: "Moscow Mule",
@@ -151,7 +174,8 @@
       {
         name: "Blue Lagoon",
         description: "A bright, citrusy cocktail with vodka, blue curaçao, and lemonade.",
-        image: "https://placehold.co/280x300/73b9d6/ffffff?text=Blue+Lagoon"
+        image: "https://placehold.co/280x300/73b9d6/ffffff?text=Blue+Lagoon",
+        available: true
       }
     ];
 
@@ -159,7 +183,9 @@
 
     cocktails.forEach((cocktail) => {
       const card = document.createElement("article");
-      card.className = "cocktail-card";
+      card.className = `cocktail-card ${
+        cocktail.available ? "" : "sold-out"
+      }`;
 
       card.innerHTML = `
         <img
