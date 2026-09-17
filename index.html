@@ -52,6 +52,13 @@
     }
 
     .cocktail-card.sold-out::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .cocktail-card.sold-out::after {
       content: "SOLD OUT";
       position: absolute;
       inset: 0;
