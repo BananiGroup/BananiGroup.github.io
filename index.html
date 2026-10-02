@@ -14,8 +14,49 @@
       margin: 0;
       padding: 40px 24px;
       font-family: Arial, sans-serif;
-      background: #1c1c1c;
       color: #f2f2f2;
+    
+      background-color: #1c1c1c;
+    
+      background-image:
+        /* Subtle sci-fi grid on the right */
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 39px,
+          rgba(80, 180, 220, 0.08) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 39px,
+          rgba(80, 180, 220, 0.08) 40px
+        ),
+        /* Subtle fantasy diamond pattern on the left */
+        repeating-linear-gradient(
+          45deg,
+          transparent 0,
+          transparent 28px,
+          rgba(150, 100, 190, 0.08) 29px,
+          transparent 30px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent 0,
+          transparent 28px,
+          rgba(100, 160, 120, 0.06) 29px,
+          transparent 30px
+        ),
+        /* Split the page into two color themes */
+        linear-gradient(
+          to right,
+          #241d2d 0%,
+          #241d2d 50%,
+          #18252c 50%,
+          #18252c 100%
+        );
+    
+      background-attachment: fixed;
     }
 
     h1 {
